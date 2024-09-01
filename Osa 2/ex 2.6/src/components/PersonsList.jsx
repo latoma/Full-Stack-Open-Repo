@@ -1,9 +1,14 @@
-const PersonsList = ({ persons, filter }) => {
+import DeleteButton from "./DeleteButton";
+
+const PersonsList = ({ persons, filter, deletePerson }) => {
   return (
     <div>
         {persons.filter(person => person.name.toLowerCase().includes(filter.toLowerCase()))
         .map(person => 
-          <p key={person.name}>{person.name} {person.number}</p>
+          <div key={person.name}>
+            {person.name} {person.number}
+            <DeleteButton person={person} deletePerson={deletePerson}/>
+          </div>
         )}
     </div>
   )
